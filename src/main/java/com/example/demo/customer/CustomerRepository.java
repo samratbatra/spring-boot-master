@@ -10,6 +10,6 @@ import java.util.List;
 public class CustomerRepository implements CustomerRepo {
     @Override
     public List<Customer> getCustomers() {
-        return Collections.singletonList(new Customer(1L , "TODO. Implement a list", "password"));
+        return Collections.singletonList(new Customer(1L , "TODO. Implement a list", "email@gmail.com", "password"));
     }
 }

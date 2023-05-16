@@ -2,6 +2,7 @@ package com.example.demo.customer;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import jakarta.validation.constraints.*;
 
 import java.util.Objects;
 
@@ -9,15 +10,22 @@ public class Customer {
 
     private final Long id;
 
+    @NotBlank
     private final String name;
 
+    @NotBlank
+    @Email
+    private final String email;
+
+    @NotBlank
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private final String password;
 
 
-    public Customer(Long id, String name, String password) {
+    public Customer(Long id, String name, String email, String password) {
         this.id = id;
         this.name = name;
+        this.email = email;
         this.password = password;
     }
 
@@ -33,6 +41,10 @@ public class Customer {
     @JsonIgnore
     public String getPassword() {
         return password;
+    }
+
+    public String getEmail() {
+        return email;
     }
 
     @Override
