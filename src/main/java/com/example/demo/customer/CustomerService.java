@@ -1,7 +1,7 @@
 package com.example.demo.customer;
 
+import com.example.demo.exception.NotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -22,4 +22,9 @@ public class CustomerService {
     }
 
 
+    public Customer getCustomer(Long id) {
+
+        return customerRepo.getCustomers().stream().filter(customer -> customer.getId() == id).findFirst().orElseThrow(() ->
+            new NotFoundException("Customer with id " + id + " not found") );
+    }
 }
