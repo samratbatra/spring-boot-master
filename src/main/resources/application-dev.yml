@@ -1,0 +1,37 @@
+app:
+    useFakeCustomerRepo: true
+info:
+    app:
+        description: Dev Application description
+        name: Spring Boot Dev application
+        version: 1.0
+    company:
+        name: BurnerCode
+management:
+    endpoint:
+        health:
+            show-details: always
+    endpoints:
+        web:
+            exposure:
+                include: health,info,prometheus
+server:
+    error:
+        include-binding-errors: always
+        include-message: always
+        include-stacktrace: on_param
+spring:
+    datasource:
+        password: admin
+        url: jdbc:postgresql://localhost:5432/burnercode
+        username: postgres
+    jpa:
+        hibernate:
+            ddl-auto: create-drop
+        properties:
+            hibernate:
+                dialect: org.hibernate.dialect.PostgreSQLDialect
+                format_sql: true
+        show-sql: true
+    main:
+        banner-mode: 'off'
